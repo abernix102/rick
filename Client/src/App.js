@@ -20,7 +20,13 @@ function App() {
       try{
          const {data} = await axios(`http://localhost:3001/rickandmorty/character/${id}`)
          if(data.name) {
-         setCharacters((oldchars)=> [...oldchars, data])
+         // setCharacters((oldchars)=> [...oldchars, data])
+         const existingCharacter = characters.find((char) => char.id === data.id)
+         if(existingCharacter){
+            alert('personaje ya existente')
+            return
+         }
+         setCharacters((oldchars) => [...oldchars, data])
          }
       }catch(error){
          alert('no hay personaje con ese ID')

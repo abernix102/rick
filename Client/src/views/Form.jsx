@@ -34,7 +34,7 @@ const Form = ({ login }) => {
       <InputForm type="email" name="email" value={userData.email} id="email" onChange={handleChange} />
       {errors.email && <p>{errors.email}</p>}
 
-      <LabelForm htmlFor="password">Contraseña:</LabelForm>
+      <LabelForm htmlFor="password">Password:</LabelForm>
       <InputForm type="password" name="password" value={userData.password} id="password" onChange={handleChange} />
       {errors.password && <p>{errors.password}</p>}
 

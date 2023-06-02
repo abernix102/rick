@@ -1,8 +1,8 @@
 import Card from './Card';
-
+import { Contenedor} from '../components/cards/cards'
 export default function Cards({characters, onClose}) {
    return(
-      <div>
+      <Contenedor>
          {
             characters.map(({id, name, status, species, gender, origin, image})=>{
                return(
@@ -20,6 +20,6 @@ export default function Cards({characters, onClose}) {
                )
             })
          }
-      </div>
+      </Contenedor>
    )
 }

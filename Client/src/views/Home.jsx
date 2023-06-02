@@ -1,12 +1,13 @@
 import Cards from '../components/Cards'
+import {Fondo,  DivFondo} from '../components/home/home.js'
 
 export default function Home (props) {
     return (
-        <div>
-            <section>
-            <Cards characters={props.characters} onClose={props.onClose }/>
-            </section>
-        </div>
+        <DivFondo>
+            <Fondo>
+                <Cards characters={props.characters} onClose={props.onClose }/>
+            </Fondo>
+         </DivFondo>
     )
 }
 

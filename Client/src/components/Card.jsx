@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { addFav, removeFav } from "../redux/actions";
 import { useState, useEffect} from "react";
+import { Borde , Image, CloseCard, Info, TitleInfo , P, ButtonLike} from "./cards/cards";
 function Card({id, name, status, species, gender, image, origin,  onClose, addFav, removeFav, myFavorites}) {
    
    const [isFav, setIsFav] = useState(false);
@@ -20,26 +21,27 @@ function Card({id, name, status, species, gender, image, origin,  onClose, addFa
          removeFav(id)
       }else{
          setIsFav(true)
-         addFav({id, name, species, gender, image, onClose})
+         addFav({id, name, status, species, gender, image, onClose})
       }
    }
    return (
-      <div>
-         <button onClick={()=>onClose(id)}>x</button>
-         <Link to={`/detail/${id}`}><h2>{name}</h2></Link>
-         <img src={image} alt={name}/>
-         <h2>{status}</h2>
-         <h2>{species}</h2>
-         <h2>{gender}</h2>
-         <h2>{origin}</h2>
+      <Borde>
+         <CloseCard onClick={()=>onClose(id)}>x</CloseCard>
+         <Image src={image} alt={name}/>
+         <Link style={{textDecoration:'none'}} to={`/detail/${id}`}><TitleInfo >{name}</TitleInfo></Link>
+         <Info>
+          <P><span style={{fontWeight:'bold'}}>species: </span> {species}</P>
+          <P><span style={{fontWeight:'bold'}}>gender: </span>{gender}</P>
+          <P><span style={{fontWeight:'bold'}}>origin: </span> {origin}</P>
+         </Info>
          {
          isFav ? (
-            <button onClick={handleFavorite}>❤️</button>
+            <ButtonLike onClick={handleFavorite}>❤️</ButtonLike>
          ) : (
-            <button onClick={handleFavorite}>🤍</button>
+            <ButtonLike onClick={handleFavorite}>🤍</ButtonLike>
          )
          }
-      </div>
+      </Borde>
    );
 }
 
